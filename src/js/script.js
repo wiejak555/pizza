@@ -59,7 +59,7 @@
       thisProduct.data = data;
       thisProduct.renderInMenu();
       thisProduct.initAccordion();
-      // console.log('new Product:', thisProduct);
+      //console.log('new Product:', thisProduct);
     }
 
     renderInMenu() {
@@ -73,32 +73,37 @@
     }
     initAccordion() {
       const thisProduct = this;
-      /* find the clickable trigger (the element that should react to clicking) */
-      const clickableTrigger = document.querySelector(select.menuProduct.clickable);
-      console.log(clickableTrigger);
-      /* START: click event listener to trigger */
 
-      clickableTrigger.addEventListener('click', function (event) {
+      /* find the clickable trigger (the element that should react to clicking) */
+      const clickAbleTriggers = document.querySelector(select.menuProduct.clickable);
+      console.log(clickAbleTriggers);
+      /* START: click event listener to trigger */
+      clickAbleTriggers.addEventListener('click', function (event) {
         /* prevent default action for event */
         event.preventDefault();
         /* toggle active class on element of thisProduct */
-        clickableTrigger.classlist.toggle('active');
-        /* find all active products */
-        const activeProducts = document.querySelectorAll('active');
-        console.log(activeProducts);
+        thisProduct.element.classList.toggle('active');
+      })
+      const activeProducts = thisProduct.element.querySelector('active');
+      console.log(activeProducts);
 
-        /* START LOOP: for each active product */
-        for (activeProduct of activeProducts) {
-          /* START: if the active product isn't the element of thisProduct */
 
-          /* remove class active for the active product */
 
-          /* END: if the active product isn't the element of thisProduct */
+      /* find all active products */
 
-          /* END LOOP: for each active product */
-        }
-        /* END: click event listener to trigger */
-      });
+      /* START LOOP: for each active product */
+
+      /* START: if the active product isn't the element of thisProduct */
+
+      /* remove class active for the active product */
+
+      /* END: if the active product isn't the element of thisProduct */
+
+      /* END LOOP: for each active product */
+
+      /* END: click event listener to trigger */
+
+
     }
 
   }
@@ -119,7 +124,7 @@
     init: function () {
       const thisApp = this;
       // console.log('*** App starting ***');
-      // console.log('thisApp:', thisApp);
+      //console.log('thisApp:', thisApp);
       // console.log('classNames:', classNames);
       // console.log('settings:', settings);
       // console.log('templates:', templates);
