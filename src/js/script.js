@@ -83,23 +83,22 @@
         event.preventDefault();
         /* toggle active class on element of thisProduct */
         clickableTrigger.classlist.toggle('active');
+        /* find all active products */
+        const activeProducts = document.querySelectorAll('active');
+        console.log(activeProducts);
+
+        /* START LOOP: for each active product */
+        for (activeProduct of activeProducts) {
+          /* START: if the active product isn't the element of thisProduct */
+
+          /* remove class active for the active product */
+
+          /* END: if the active product isn't the element of thisProduct */
+
+          /* END LOOP: for each active product */
+        }
+        /* END: click event listener to trigger */
       });
-      /* find all active products */
-      const activeProducts = document.querySelectorAll('active');
-      console.log(activeProducts);
-
-      /* START LOOP: for each active product */
-
-      /* START: if the active product isn't the element of thisProduct */
-
-      /* remove class active for the active product */
-
-      /* END: if the active product isn't the element of thisProduct */
-
-      /* END LOOP: for each active product */
-
-      /* END: click event listener to trigger */
-
     }
 
   }
