@@ -33,14 +33,14 @@
     },
   };
 
-  const classNames = {
+  const classNames = {// eslint-disable-line
     menuProduct: {
       wrapperActive: 'active',
       imageVisible: 'active',
     },
   };
 
-  const settings = {
+  const settings = {// eslint-disable-line
     amountWidget: {
       defaultValue: 1,
       defaultMin: 1,
@@ -95,7 +95,7 @@
           /* END LOOP: for each active product */
         }
         /* END: click event listener to trigger */
-      })
+      });
     }
   }
 
