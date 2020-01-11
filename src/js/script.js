@@ -73,39 +73,18 @@
     }
     initAccordion() {
       const thisProduct = this;
-
-      /* find the clickable trigger (the element that should react to clicking) */
-      const clickAbleTriggers = document.querySelector(select.menuProduct.clickable);
-      //console.log(clickAbleTriggers);
-      /* START: click event listener to trigger */
+      const clickAbleTriggers = thisProduct.element.querySelector(select.menuProduct.clickable);
       clickAbleTriggers.addEventListener('click', function (event) {
-        /* prevent default action for event */
         event.preventDefault();
-        /* toggle active class on element of thisProduct */
         thisProduct.element.classList.toggle('active');
       })
       const activeProducts = thisProduct.element.querySelectorAll(select.all.menuProductsActive);
-      console.log(activeProducts);
-
-
-
-      /* find all active products */
-
-      /* START LOOP: for each active product */
-
-      /* START: if the active product isn't the element of thisProduct */
-
-      /* remove class active for the active product */
-
-      /* END: if the active product isn't the element of thisProduct */
-
-      /* END LOOP: for each active product */
-
-      /* END: click event listener to trigger */
-
-
+      for (activeProduct of activeProducts) {
+        if (activeProduct != thisProduct.element) {
+          activeProduct.classList.remove('active');
+        }
+      }
     }
-
   }
 
   const app = {
