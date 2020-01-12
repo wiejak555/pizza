@@ -88,7 +88,7 @@
       thisProduct.cartButton.addEventListener('click', function (event) {
         event.preventDefault();
         thisProduct.processOrder();
-      })
+      });
     }
 
     processOrder() {
@@ -96,8 +96,10 @@
 
       /* read all data from the form (using utils.serializeFormToObject) and save it to const formData */
       const formData = utils.serializeFormToObject(thisProduct.form);
+      console.log(formData);
       /* set variable price to equal thisProduct.data.price */
       let price = thisProduct.data.price;
+      console.log(price);
       /* START LOOP: for each paramId in thisProduct.data.params */
       for (let paramId in thisProduct.data.params) {
         /* save the element in thisProduct.data.params with key paramId as const param */
