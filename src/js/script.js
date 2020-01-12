@@ -112,7 +112,7 @@
           const option = params.options[optionId];
 
           /* START IF: if option is selected and option is not default */
-          const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(paramId) > -1;
+          const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
 
           //console.log('optionSelected:', optionSelected);
           if (optionSelected && !option.default) {
@@ -132,7 +132,7 @@
       }
       /* set the contents of thisProduct.priceElem to be the value of variable price */
 
-      thisProduct.priceElem.innerHTML = thisProduct.price;
+      thisProduct.priceElem.innerHTML = price;
 
     }
 
