@@ -94,6 +94,8 @@
     processOrder() {
       const thisProduct = this;
       console.log(this.processOrder);
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      console.log('formData:', formData);
     }
 
     initAccordion() {
