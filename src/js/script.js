@@ -100,6 +100,9 @@
         for (let optionId in params.options) {
           const option = params.options[optionId];
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
+
+          const imgProduct = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
+
           if (optionSelected && !option.default) {
             price += option.price;
           }
@@ -107,22 +110,11 @@
             price -= option.price;
           }
 
-          const imgProduct = thisProduct.imageWrapper;
-          if (formData.hasOwnProperty(paramId)) {
-            for (paramId in thisProduct.data.params) {
-              imgProduct.classList.add('active');
-            }
-          }
-          else {
-            for (paramId in thisProduct.data.params) {
-              imgProduct.classList.remove('active');
-            }
-          }
+
           thisProduct.priceElem.innerHTML = price;
         }
       }
     }
-
     initAccordion() {
       const thisProduct = this;
       thisProduct.accordionTrigger.addEventListener('click', function (event) {
