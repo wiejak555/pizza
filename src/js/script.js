@@ -102,14 +102,21 @@
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
 
           const imgProduct = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
-          console.log(imgProduct);
+          if (imgProduct) {
+            const element = imgProduct.getAttribute(qualifiedName = 'class').replace(searchValue = 'active', replaceValue = '').trim().split(separator = '-')[1];
+            if (element.replace(searchValue = ' ', replaceValue = '') === optionId && optionSelected) {
+              imgProduct.classList.add(classNames.menuProduct, imageVisible);
+            } else {
+              imgProduct.classList.remove(classNames.menuProduct.imageVisible);
+            }
+          }
+
           if (optionSelected && !option.default) {
             price += option.price;
           }
           else if (!optionSelected && option.default) {
             price -= option.price;
           }
-          if (optionSelected) { }
           thisProduct.priceElem.innerHTML = price;
         }
       }
