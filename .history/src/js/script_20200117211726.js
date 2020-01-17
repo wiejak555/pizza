@@ -173,9 +173,7 @@
 
     initActions() {
       const thisWidget = this;
-      thisWidget.input.addEventListener('change', function () {
-        thisWidget.setValue = thisWidget.input.value;
-      });
+      thisWidget.input.addEventListener('change', setValue(thisWidget.value));
 
       thisWidget.linkDecrease.addEventListener('click', function () {
         event.preventDefault();

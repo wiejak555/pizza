@@ -173,16 +173,16 @@
 
     initActions() {
       const thisWidget = this;
-      thisWidget.input.addEventListener('change', function () {
+      thisWidget.dom.input.addEventListener('change', function () {
         thisWidget.setValue = thisWidget.input.value;
       });
 
-      thisWidget.linkDecrease.addEventListener('click', function () {
+      thisWidget.dom.linkDecrease.addEventListener('click', function () {
         event.preventDefault();
         setValue(thisWidget.value - 1)
       });
 
-      thisWidget.linkIncrease.addEventListener('click', function () {
+      thisWidget.dom.linkIncrease.addEventListener('click', function () {
         event.preventDefault();
         setValue(thisWidget.value + 1)
 

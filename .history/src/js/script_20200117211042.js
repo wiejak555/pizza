@@ -164,7 +164,6 @@
 
     setValue(value) {
       const thisWidget = this;
-
       const newValue = parseInt(value);
 
       thisWidget.value = newValue;
@@ -172,20 +171,16 @@
     }
 
     initActions() {
-      const thisWidget = this;
-      thisWidget.input.addEventListener('change', function () {
-        thisWidget.setValue = thisWidget.input.value;
-      });
+      thisWidget.input.addEventListener('change', setValue(thisWidget.value));
 
-      thisWidget.linkDecrease.addEventListener('click', function () {
+      thisWidget.linkDecrease.addEventListener('click', function (event) {
         event.preventDefault();
         setValue(thisWidget.value - 1)
       });
 
-      thisWidget.linkIncrease.addEventListener('click', function () {
+      thisWidget.linkIncreaseaddEventListener('click', function (event) {
         event.preventDefault();
         setValue(thisWidget.value + 1)
-
 
       });
     }
