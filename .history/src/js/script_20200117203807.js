@@ -178,46 +178,42 @@
 
     initActions() {
       thisWidget.input.addEventListener('change', setValue(thisWidget.value));
-
       thisWidget.linkDecrease.addEventListener('click', function (event) {
         event.preventDefault();
-        setValue(thisWidget.value - 1)
-      });
-
-      thisWidget.linkIncreaseaddEventListener('click', function (event) {
-        event.preventDefault();
-        setValue(thisWidget.value + 1)
-
-      });
+        setValue(thisWidget.value - 1);
+        thisWidget.linkIncreaseaddEventListener('click', function (event) {
+          event.preventDefault();
+          setValue(thisWidget.value + 1);
+        })
+      };
     }
 
+
+    const app = {
+      initMenu: function () {
+        const thisApp = this;
+        for (let productData in thisApp.data.products) {
+          new Product(productData, thisApp.data.products[productData]);
+        }
+      },
+
+      initData: function () {
+        const thisApp = this;
+        thisApp.data = dataSource;
+      },
+
+      init: function () {
+        const thisApp = this;
+        // console.log('*** App starting ***');
+        //console.log('thisApp:', thisApp);
+        // console.log('classNames:', classNames);
+        // console.log('settings:', settings);
+        // console.log('templates:', templates);
+
+        thisApp.initData();
+        thisApp.initMenu();
+      },
+    };
+
+    app.init();
   }
-
-  const app = {
-    initMenu: function () {
-      const thisApp = this;
-      for (let productData in thisApp.data.products) {
-        new Product(productData, thisApp.data.products[productData]);
-      }
-    },
-
-    initData: function () {
-      const thisApp = this;
-      thisApp.data = dataSource;
-    },
-
-    init: function () {
-      const thisApp = this;
-      // console.log('*** App starting ***');
-      //console.log('thisApp:', thisApp);
-      // console.log('classNames:', classNames);
-      // console.log('settings:', settings);
-      // console.log('templates:', templates);
-
-      thisApp.initData();
-      thisApp.initMenu();
-    },
-  };
-
-  app.init();
-}

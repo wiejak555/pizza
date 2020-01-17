@@ -177,21 +177,10 @@
     }
 
     initActions() {
-      thisWidget.input.addEventListener('change', setValue(thisWidget.value));
-
-      thisWidget.linkDecrease.addEventListener('click', function (event) {
-        event.preventDefault();
-        setValue(thisWidget.value - 1)
-      });
-
-      thisWidget.linkIncreaseaddEventListener('click', function (event) {
-        event.preventDefault();
-        setValue(thisWidget.value + 1)
-
-      });
+      thisWidget.input.addEventListener('change', setValue(thisWidget.value);)
     }
-
   }
+
 
   const app = {
     initMenu: function () {

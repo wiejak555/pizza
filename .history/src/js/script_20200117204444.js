@@ -178,7 +178,7 @@
 
     initActions() {
       thisWidget.input.addEventListener('change', setValue(thisWidget.value));
-
+      console.log(thisWidget.input);
       thisWidget.linkDecrease.addEventListener('click', function (event) {
         event.preventDefault();
         setValue(thisWidget.value - 1)

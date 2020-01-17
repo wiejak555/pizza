@@ -153,7 +153,6 @@
     constructor(element) {
       const thisWidget = this;
       thisWidget.getElements(element);
-      thisWidget.setValue(thisWidget.input.value);
 
       console.log('AmountWidget:', AmountWidget);
       console.log('constructor arguments:', element);
@@ -175,23 +174,8 @@
       thisWidget.value = newValue;
       thisWidget.input.value = thisWidget.value;
     }
-
-    initActions() {
-      thisWidget.input.addEventListener('change', setValue(thisWidget.value));
-
-      thisWidget.linkDecrease.addEventListener('click', function (event) {
-        event.preventDefault();
-        setValue(thisWidget.value - 1)
-      });
-
-      thisWidget.linkIncreaseaddEventListener('click', function (event) {
-        event.preventDefault();
-        setValue(thisWidget.value + 1)
-
-      });
-    }
-
   }
+
 
   const app = {
     initMenu: function () {
