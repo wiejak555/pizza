@@ -102,11 +102,7 @@
 
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
 
-          const imgProduct = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
-          if (imgProduct) {
-            if (optionSelected) imgProduct.classList.add(classNames.menuProduct.imageVisible);
-            else imgProduct.classList.remove(classNames.menuProduct.imageVisible);
-          }
+          // const imgProduct = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
 
           if (optionSelected && !option.default) {
             price += option.price;
@@ -163,36 +159,37 @@
       thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
       thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
       thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
-
     }
+
   }
+}
 
 
-  const app = {
-    initMenu: function () {
-      const thisApp = this;
-      for (let productData in thisApp.data.products) {
-        new Product(productData, thisApp.data.products[productData]);
-      }
-    },
+const app = {
+  initMenu: function () {
+    const thisApp = this;
+    for (let productData in thisApp.data.products) {
+      new Product(productData, thisApp.data.products[productData]);
+    }
+  },
 
-    initData: function () {
-      const thisApp = this;
-      thisApp.data = dataSource;
-    },
+  initData: function () {
+    const thisApp = this;
+    thisApp.data = dataSource;
+  },
 
-    init: function () {
-      const thisApp = this;
-      // console.log('*** App starting ***');
-      //console.log('thisApp:', thisApp);
-      // console.log('classNames:', classNames);
-      // console.log('settings:', settings);
-      // console.log('templates:', templates);
+  init: function () {
+    const thisApp = this;
+    // console.log('*** App starting ***');
+    //console.log('thisApp:', thisApp);
+    // console.log('classNames:', classNames);
+    // console.log('settings:', settings);
+    // console.log('templates:', templates);
 
-      thisApp.initData();
-      thisApp.initMenu();
-    },
-  };
+    thisApp.initData();
+    thisApp.initMenu();
+  },
+};
 
-  app.init();
+app.init();
 }

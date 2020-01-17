@@ -61,9 +61,7 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
-      thisProduct.initAmountWidget();
       thisProduct.processOrder();
-
     }
 
     renderInMenu() {
@@ -76,6 +74,8 @@
 
     initOrderForm() {
       const thisProduct = this;
+      // console.log(this.initOrderForm);
+
       thisProduct.form.addEventListener('submit', function (event) {
         event.preventDefault();
         thisProduct.processOrder();
@@ -102,11 +102,10 @@
 
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
 
-          const imgProduct = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
-          if (imgProduct) {
-            if (optionSelected) imgProduct.classList.add(classNames.menuProduct.imageVisible);
-            else imgProduct.classList.remove(classNames.menuProduct.imageVisible);
-          }
+          const images = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
+
+
+
 
           if (optionSelected && !option.default) {
             price += option.price;
@@ -114,6 +113,25 @@
           else if (!optionSelected && option.default) {
             price -= option.price;
           }
+
+          if (optionSelected) {
+            if (!thisProduct.params[paramId]) {
+              thisProduct.params[paramId] = {
+                label: params.label,
+                options: {},
+              };
+            }
+            thisProduct.params[paramId].options[optionId] = option.label;
+            for (let image of images) {
+              image.classList.add(classNames.menuProduct.imageVisible);
+            }
+          }
+          else {
+            for (let image of images) {
+              image.classList.remove(classNames.menuProduct.imageVisible);
+            }
+          }
+
           thisProduct.priceElem.innerHTML = price;
         }
       }
@@ -131,10 +149,6 @@
         }
       });
     }
-    initAmountWidget() {
-      const thisProduct = this;
-      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-    }
     getElements() {
       const thisProduct = this;
       thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
@@ -143,30 +157,8 @@
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
-      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
     }
   }
-
-  class AmountWidget {
-    constructor(element) {
-      const thisWidget = this;
-      thisWidget.getElements(element);
-
-      console.log('AmountWidget:', AmountWidget);
-      console.log('constructor arguments:', element);
-    }
-
-    getElements(element) {
-      const thisWidget = this;
-
-      thisWidget.element = element;
-      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
-      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
-      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
-
-    }
-  }
-
 
   const app = {
     initMenu: function () {

@@ -102,11 +102,7 @@
 
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
 
-          const imgProduct = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
-          if (imgProduct) {
-            if (optionSelected) imgProduct.classList.add(classNames.menuProduct.imageVisible);
-            else imgProduct.classList.remove(classNames.menuProduct.imageVisible);
-          }
+          // const imgProduct = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
 
           if (optionSelected && !option.default) {
             price += option.price;

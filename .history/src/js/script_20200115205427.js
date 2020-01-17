@@ -61,9 +61,7 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
-      thisProduct.initAmountWidget();
       thisProduct.processOrder();
-
     }
 
     renderInMenu() {
@@ -76,6 +74,8 @@
 
     initOrderForm() {
       const thisProduct = this;
+
+
       thisProduct.form.addEventListener('submit', function (event) {
         event.preventDefault();
         thisProduct.processOrder();
@@ -102,11 +102,12 @@
 
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
 
-          const imgProduct = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
-          if (imgProduct) {
-            if (optionSelected) imgProduct.classList.add(classNames.menuProduct.imageVisible);
-            else imgProduct.classList.remove(classNames.menuProduct.imageVisible);
-          }
+          const imgProduct = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
+
+          console.log(imgProduct);
+
+          const element = imgProduct(this.getClass().getName());
+
 
           if (optionSelected && !option.default) {
             price += option.price;
@@ -131,10 +132,6 @@
         }
       });
     }
-    initAmountWidget() {
-      const thisProduct = this;
-      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-    }
     getElements() {
       const thisProduct = this;
       thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
@@ -143,30 +140,8 @@
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
-      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
     }
   }
-
-  class AmountWidget {
-    constructor(element) {
-      const thisWidget = this;
-      thisWidget.getElements(element);
-
-      console.log('AmountWidget:', AmountWidget);
-      console.log('constructor arguments:', element);
-    }
-
-    getElements(element) {
-      const thisWidget = this;
-
-      thisWidget.element = element;
-      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
-      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
-      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
-
-    }
-  }
-
 
   const app = {
     initMenu: function () {

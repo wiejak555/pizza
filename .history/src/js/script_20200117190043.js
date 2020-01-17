@@ -104,7 +104,7 @@
 
           const imgProduct = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
           if (imgProduct) {
-            if (optionSelected) imgProduct.classList.add(classNames.menuProduct.imageVisible);
+            if (isSelected) imgProduct.classList.add(classNames.menuProduct.imageVisible);
             else imgProduct.classList.remove(classNames.menuProduct.imageVisible);
           }
 
