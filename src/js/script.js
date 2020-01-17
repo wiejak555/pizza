@@ -161,34 +161,6 @@
       //console.log('constructor arguments:', element);
     }
 
-
-
-    setValue(value) {
-      const thisWidget = this;
-
-      const newValue = parseInt(value);
-
-      thisWidget.value = newValue;
-      thisWidget.input.value = thisWidget.value;
-    }
-
-    initActions() {
-      const thisWidget = this;
-      thisWidget.input.addEventListener('change', function () {
-        thisWidget.setValue = thisWidget.input.value;
-      });
-
-      thisWidget.linkDecrease.addEventListener('click', function () {
-        event.preventDefault();
-        setValue(thisWidget.value - 1);// eslint-disable-line
-      });
-
-      thisWidget.linkIncrease.addEventListener('click', function () {
-        event.preventDefault();
-        setValue(thisWidget.value + 1);// eslint-disable-line
-      });
-    }
-
     getElements(element) {
       const thisWidget = this;
 
@@ -197,6 +169,40 @@
       thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
       thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
     }
+
+    setValue(value) {
+      const thisWidget = this;
+      const newValue = parseInt(value);
+
+      thisWidget.value = newValue;
+      thisWidget.announce();
+      thisWidget.input.value = thisWidget.value;
+    }
+
+    initActions() {
+
+      const thisWidget = this;
+      thisWidget.input.addEventListener('change', function () {
+        thisWidget.setValue(thisWidget.input.value);
+      });
+
+      thisWidget.linkDecrease.addEventListener('click', function () {
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value - 1);// eslint-disable-line
+      });
+
+      thisWidget.linkIncrease.addEventListener('click', function () {
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value + 1);// eslint-disable-line
+      });
+    }
+    announce() {
+      const thisWidget = this;
+
+      const event = new Event('updated');
+      thisWidget.element.dispatchEvent(event);
+    }
+
   }
 
   const app = {
