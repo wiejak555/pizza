@@ -157,7 +157,7 @@
       thisProduct.price = thisProduct.priceSingle * thisProduct.amountWidget.value;
 
       thisProduct.priceElem.innerHTML = thisProduct.price;
-      console.log(thisProduct.params)
+      //console.log(thisProduct.params)
     }
     initAccordion() {
       const thisProduct = this;
@@ -267,7 +267,7 @@
       thisCart.getElements(element);
       thisCart.initActions();
 
-      console.log('new cart:', thisCart);
+      // console.log('new cart:', thisCart);
     }
     getElements(element) {
       const thisCart = this;
@@ -291,9 +291,35 @@
       const generatedHTML = templates.cartProduct(menuProduct);
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
       thisCart.dom.productList.appendChild(generatedDOM);
+      thisCart.products.push(new cartProduct(menuProduct, generatedDOM));
+      //console.log('thisCart.products:', thisCart.products);
 
+      //console.log('adding product:', menuProduct);
+    }
+  }
 
-      console.log('adding product:', menuProduct);
+  class cartProduct {
+    constructor(menuProduct, element) {
+      const thisCartProduct = this;
+      thisCartProduct.id = menuProduct.id;
+      thisCartProduct.name = menuProduct.name;
+      thisCartProduct.price = menuProduct.price;
+      thisCartProduct.priceSingle = menuProduct.priceSingle;
+      thisCartProduct.amount = menuProduct.amount;
+      thisCartProduct.params = JSON.parse(JSON.stringify(menuProduct.params));
+      thisCartProduct.getElements(element);
+
+    }
+
+    getElements(element) {
+      const thisCartProduct = this;
+      thisCartProduct.dom = {};
+      thisCartProduct.dom.wrapperActive = element;
+      thisCartProduct.dom.amountWidget = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.amountWidget);
+      thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
+      thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
+      thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
+
     }
   }
 
