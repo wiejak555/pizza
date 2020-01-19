@@ -195,7 +195,6 @@
     }
   }
 
-
   class AmountWidget {
     constructor(element) {
       const thisWidget = this;
@@ -279,7 +278,6 @@
 
     initActions() {
       const thisCart = this;
-
       thisCart.dom.toggleTrigger.addEventListener('click', function () {
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
@@ -289,12 +287,12 @@
       const thisCart = this;
 
       const generatedHTML = templates.cartProduct(menuProduct);
+
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+
       thisCart.dom.productList.appendChild(generatedDOM);
       thisCart.products.push(new cartProduct(menuProduct, generatedDOM));
-      //console.log('thisCart.products:', thisCart.products);
 
-      //console.log('adding product:', menuProduct);
     }
   }
 
@@ -346,18 +344,15 @@
         new Product(productData, thisApp.data.products[productData]);
       }
     },
-
+    initData: function () {
+      const thisApp = this;
+      thisApp.data = dataSource;
+    },
     initCart: function () {
       const thisApp = this;
       const cartElem = document.querySelector(select.containerOf.cart);
       thisApp.cart = new Cart(cartElem);
     },
-
-    initData: function () {
-      const thisApp = this;
-      thisApp.data = dataSource;
-    },
-
     init: function () {
       const thisApp = this;
       // console.log('*** App starting ***');
