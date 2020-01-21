@@ -69,7 +69,7 @@
       defaultMin: 1,
       defaultMax: 9,
       cart: {
-        defaultDeliveryFee: 20,
+        defaultdeliveryFee: 20,
       },
     }
   };
@@ -264,7 +264,7 @@
       const thisCart = this;
 
       thisCart.products = [];
-      thisCart.DeliveryFee = settings.cart.defaultDeliveryFee;
+      thisCart.deliveryFee = settings.cart.defaultdeliveryFee;
 
       thisCart.getElements(element);
       thisCart.initActions();
