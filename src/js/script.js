@@ -334,9 +334,7 @@
       }
     }
     remove(cartProduct) {
-
       const thisCart = this;
-
       const index = thisCart.products.indexOf('cartProduct');
       thisCart.products.splice(index, 1);
       cartProduct.dom.wrapper.remove();
@@ -419,16 +417,16 @@
     },
     initData: function () {
       const thisApp = this;
-      thisApp.data = dataSource;
-      // const url = settings.db.url + '/' + settings.db.product;
-      //fetch(url)
-      //.then(function (rawResponse) {
-      // return rawResponse.json();
-      // })
-      // .then(function (parsedPesponse) {
-      //  console.log('parsedResponse', parsedResponse);
-      // })
-      // console.log('thisApp.data', JSON.stringify(thisApp.data));
+      thisApp.data = {};
+      const url = settings.db.url + '/' + settings.db.product;
+      fetch(url)
+        .then(function (rawResponse) {
+          return rawResponse.json();
+        })
+        .then(function (parsedResponse) {
+          thisApp.data.products = parsedResponse;
+          thisApp.initMenu();
+        });
     },
     initCart: function () {
       const thisApp = this;
