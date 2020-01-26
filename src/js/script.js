@@ -333,12 +333,13 @@
         }
       }
     }
-    remove() {
+    remove(cartProduct) {
+
       const thisCart = this;
+
       const index = thisCart.products.indexOf('cartProduct');
       thisCart.products.splice(index, 1);
-      const cartProductDomWrapper = document.querySelector('cartProduct.dom.wrapper');
-      cartProductDomWrapper.remove();
+      cartProduct.dom.wrapper.remove();
       thisCart.update();
     }
   }
@@ -418,7 +419,7 @@
     },
     initData: function () {
       const thisApp = this;
-      thisApp.data = {};
+      thisApp.data = dataSource;
       // const url = settings.db.url + '/' + settings.db.product;
       //fetch(url)
       //.then(function (rawResponse) {
