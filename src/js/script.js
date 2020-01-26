@@ -271,7 +271,6 @@
       thisCart.getElements(element);
       thisCart.initActions();
 
-      // console.log('new cart:', thisCart);
     }
     getElements(element) {
       const thisCart = this;
@@ -286,7 +285,6 @@
         thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key]);
       }
     }
-
     initActions() {
       const thisCart = this;
       thisCart.dom.toggleTrigger.addEventListener('click', function () {
@@ -295,8 +293,10 @@
       thisCart.dom.productList.addEventListener('updated', function () {
         thisCart.update();
       });
+      thisCart.dom.productList.addEventListener('remove', function () {
+        thisCart.remove(event.detail.cartProduct);
+      });
     }
-
     add(menuProduct) {
       const thisCart = this;
 
@@ -309,7 +309,6 @@
 
       thisCart.update();
     }
-
     update() {
       const thisCart = this;
 
@@ -327,6 +326,14 @@
           elem.innerHTML = thisCart[key];
         }
       }
+    }
+    remove(cartProduct) {
+      const thisCart = this;
+      const index = thisCart.products.indexOf('cartProduct');
+      thisCart.products.splice(index, 1);
+      const cartProductDomWrapper = document.querySelector('cartProduct.dom.wrapper');
+      cartProductDomWrapper.remove();
+      thisCart.update();
     }
   }
 
@@ -389,6 +396,8 @@
       });
       thisCartProduct.dom.remove.addEventListener('click', function () {
         event.preventDefault();
+        thisCartProduct.remove();
+
       });
 
     }
