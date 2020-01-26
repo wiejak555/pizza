@@ -71,6 +71,11 @@
       cart: {
         defaultDeliveryFee: 20,
       },
+      db: {
+        url: '//localhost:3131',
+        product: 'product',
+        order: 'order',
+      },
     }
   };
 
@@ -78,6 +83,7 @@
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
     cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
   };
+
 
   class Product {
     constructor(id, data) {
@@ -327,7 +333,7 @@
         }
       }
     }
-    remove(cartProduct) {
+    remove() {
       const thisCart = this;
       const index = thisCart.products.indexOf('cartProduct');
       thisCart.products.splice(index, 1);
@@ -407,12 +413,21 @@
     initMenu: function () {
       const thisApp = this;
       for (let productData in thisApp.data.products) {
-        new Product(productData, thisApp.data.products[productData]);
+        new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
       }
     },
     initData: function () {
       const thisApp = this;
-      thisApp.data = dataSource;
+      thisApp.data = {};
+      const url = settings.db.url + '/' + settings.db.product;
+      fetch(url)
+        .then(function (rawResponse) {
+          return rawResponse.json();
+        })
+        .then(function (parsedPesponse) {
+          console.log('parsedResponse', parsedResponse);
+        })
+      console.log('thisApp.data', JSON.stringify(thisApp.data));
     },
     initCart: function () {
       const thisApp = this;
