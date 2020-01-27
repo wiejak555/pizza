@@ -2,7 +2,7 @@
 import { select } from '../settings.js';
 import AmountWidget from './AmountWidget.js';
 
-class cartProduct {// eslint-disable-line no-use-before-define
+export class cartProduct {
   constructor(menuProduct, element) {
     const thisCartProduct = this;
     thisCartProduct.id = menuProduct.id;
@@ -26,7 +26,7 @@ class cartProduct {// eslint-disable-line no-use-before-define
     thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
     thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
     thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
-    //console.log(thisCartProduct);
+
   }
   initAmountWidget() {
     const thisCartProduct = this;
@@ -67,4 +67,4 @@ class cartProduct {// eslint-disable-line no-use-before-define
 
   }
 }
-export default cartProduct;// eslint-disable-line no-use-before-define
+export default cartProduct;

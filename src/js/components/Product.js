@@ -116,7 +116,10 @@ class Product {
 
   addToCart() {
     const thisProduct = this;
-    app.cart.add(thisProduct);
+    //app.cart.add(thisProduct);
+
+    thisProduct.name = thisProduct.data.name;
+    thisProduct.amount = thisProduct.amountWidget.value;
 
     const event = new CustomEvent('add-to-cart', {
       bubbles: true,
@@ -128,5 +131,6 @@ class Product {
     thisProduct.element.dispatchEvent(event);
   }
 }
-export default Product;
 
+
+export default Product;

@@ -1,4 +1,7 @@
 
+
+/*global Handlebars*/
+
 export const select = {
   templateOf: {
     menuProduct: '#template-menu-product',
