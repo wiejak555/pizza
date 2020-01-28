@@ -3,7 +3,7 @@ import utils from '../utils.js';
 import AmountWidget from './AmountWidget.js';
 
 
-class Product {
+export class Product {
   constructor(id, data) {
     const thisProduct = this;
     thisProduct.id = id;
@@ -133,4 +133,3 @@ class Product {
 }
 
 
-export default Product;

@@ -112,4 +112,3 @@ export class Cart {
 
 }
 
-export default Cart;

@@ -2,7 +2,7 @@
 import { select } from '../settings.js';
 import AmountWidget from './AmountWidget.js';
 
-export class cartProduct {
+class cartProduct {
   constructor(menuProduct, element) {
     const thisCartProduct = this;
     thisCartProduct.id = menuProduct.id;
@@ -67,4 +67,5 @@ export class cartProduct {
 
   }
 }
+
 export default cartProduct;
