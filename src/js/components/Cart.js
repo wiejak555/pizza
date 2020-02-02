@@ -7,7 +7,7 @@ export class Cart {
     const thisCart = this;
 
     thisCart.products = [];
-    thisCart.deliveryFee = settings.amountWidget.cart.defaultDeliveryFee;
+    thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
 
     thisCart.getElements(element);
     thisCart.initActions();
@@ -46,7 +46,7 @@ export class Cart {
   sendOrder() {
     const thisCart = this;
 
-    const url = settings.amountWidget.db.url + '/' + settings.amountWidget.db.order;
+    const url = settings.db.url + '/' + settings.db.order;
 
     const payload = {
       address: thisCart.dom.address,
